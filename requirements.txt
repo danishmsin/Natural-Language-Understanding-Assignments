@@ -1,0 +1,14 @@
+Requirements :
+
+Datasets:
+	1. Reuters Dataset
+	2. questions-words.txt
+	3. SimLex-999 Dataset
+
+Toolkit:
+	1. tensorflow
+	2. keras
+	3. numpy
+	4. os
+	5. math
+
