@@ -13,3 +13,8 @@ For Task-2:
 
 
 
+There's a small typo in the report.
+- Instead of the analogy task -- London : England :: Athens : ?
+The results were shown of the task -- Athens : Greece :: London : ?
+
+Sorry for informing late..
