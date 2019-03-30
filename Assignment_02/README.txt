@@ -1,3 +1,6 @@
+Development task : Download as per the guidelines in tst2012 folder
+Test task : Download as per the guidelines in tst2013 folder
+
 Embedding
 Given the categorical nature of words, the model must first look up the source and target embeddings to retrieve the corresponding word representations. For this embedding layer to work, a vocabulary is first chosen for each language. Usually, a vocabulary size V is selected, and only the most frequent V words are treated as unique. All other words are converted to an "unknown" token and all get the same embedding. The embedding weights, one set per language, are usually learned during training.
 
@@ -12,7 +15,7 @@ encoder_emb_inp = embedding_ops.embedding_lookup(
 Similarly, we can build embedding_decoder and decoder_emb_inp. Note that one can choose to initialize embedding weights with pretrained word representations such as word2vec or Glove vectors. In general, given a large amount of training data we can learn these embeddings from scratch.
 
 Encoder
-Once retrieved, the word embeddings are then fed as input into the main network, which consists of two multi-layer RNNs ñ an encoder for the source language and a decoder for the target language. These two RNNs, in principle, can share the same weights; however, in practice, we often use two different RNN parameters (such models do a better job when fitting large training datasets). The encoder RNN uses zero vectors as its starting states and is built as follows:
+Once retrieved, the word embeddings are then fed as input into the main network, which consists of two multi-layer RNNs ‚Äì an encoder for the source language and a decoder for the target language. These two RNNs, in principle, can share the same weights; however, in practice, we often use two different RNN parameters (such models do a better job when fitting large training datasets). The encoder RNN uses zero vectors as its starting states and is built as follows:
 
 # Build RNN cell
 encoder_cell = tf.nn.rnn_cell.BasicLSTMCell(num_units)
@@ -73,7 +76,7 @@ update_step = optimizer.apply_gradients(
     zip(clipped_gradients, params))
 In our own experiments, we use standard SGD (tf.train.GradientDescentOptimizer) with a decreasing learning rate schedule, which yields better performance. See the benchmarks.
 
-Hands-on ñ Let's train an NMT model
+Hands-on ‚Äì Let's train an NMT model
 Let's train our very first NMT model, translating from Vietnamese to English! The entry point of our code is nmt.py.
 
 We will use a small-scale parallel corpus of TED talks (133K training examples) for this exercise.
@@ -84,7 +87,7 @@ Run the following command to start the training:
 
 mkdir /tmp/nmt_model
 python -m nmt.nmt \
-    --src=vi --tgt=en \
+    --src=en --tgt=de \
     --vocab_prefix=/tmp/nmt_data/vocab  \
     --train_prefix=/tmp/nmt_data/train \
     --dev_prefix=/tmp/nmt_data/tst2012  \
@@ -103,7 +106,7 @@ The above command trains a 2-layer LSTM seq2seq model with 128-dim hidden units 
   eval test: perplexity 17193.27
 # Start epoch 0, step 0, lr 1, Tue Apr 25 23:17:41 2017
   sample train data:
-    src_reverse: </s> </s> –i?u dÛ , di nhiÍn , l‡ c‚u chuy?n trÌch ra t? h?c thuy?t c?a Karl Marx .
+    src_reverse: </s> </s> √êi?u d√≥ , di nhi√™n , l√† c√¢u chuy?n tr√≠ch ra t? h?c thuy?t c?a Karl Marx .
     ref: That , of course , was the <unk> distilled from the theories of Karl Marx . </s> </s> </s>
   epoch 0 step 100 lr 1 step-time 0.89s wps 5.78K ppl 1568.62 bleu 0.00
   epoch 0 step 200 lr 1 step-time 0.94s wps 5.91K ppl 524.11 bleu 0.00
