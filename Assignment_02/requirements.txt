@@ -1,0 +1,13 @@
+Requirements :
+
+Datasets:
+	1. WMT14 Machine Translation task 
+	2. Development Task : http://www.statmt.org/wmt14/dev.tgz .
+	3. Test Task : http://www.statmt.org/wmt14/test-full.tgz .
+
+Toolkit:
+	1. tensorflow-gpu
+	2. keras
+	3. numpy
+	4. os
+	5. math
