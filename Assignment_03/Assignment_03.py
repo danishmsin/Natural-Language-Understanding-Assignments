@@ -10,6 +10,7 @@ from nltk import CFG
 from nltk import tokenize
 from nltk.parse import ViterbiParser
 import pickle
+import sys
 
 #Chomsky Normal Form...
 productions = []
@@ -64,10 +65,11 @@ grammar = induce_pcfg(S,list_prod)
 
 #sent = sys.argv[1]
 #print(sent)
-sent = "I am great!"
+#sent = "I am great!"
 
 # Tokenize the sentence.
-tokens = sent.split()
+#tokens = sent.split()
+tokens = sys.argv[1:]
 
 # Define a list of parsers.  We'll use all parsers.
 parser = ViterbiParser(grammar)
@@ -90,7 +92,7 @@ trees = parser.parse_all(tokens)
 for tree in trees:
     pass
 
-UNK_str = tree.__str__()
+UNK_str = trees[0].__str__()
 answer= UNK_str
 
 for i in change_words:

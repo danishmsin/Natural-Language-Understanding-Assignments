@@ -4,8 +4,8 @@ pickle_in = open("grammar_with_prob","rb")
 grammar = pickle.load(pickle_in)
 from nltk.parse import ViterbiParser
 
-sent = sys.argv[1]
-print(sent)
+#sent = sys.argv[1]
+#print(sent)
 #sent = "I am great!"
 
 # Tokenize the sentence.
@@ -32,7 +32,7 @@ trees = parser.parse_all(tokens)
 for tree in trees:
     pass
 
-UNK_str = tree.__str__()
+UNK_str = trees[0].__str__()
 answer= UNK_str
 
 for i in change_words:
